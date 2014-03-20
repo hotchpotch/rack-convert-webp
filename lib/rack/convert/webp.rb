@@ -12,7 +12,7 @@ module Rack
         image/png
         image/tiff
       )
-      DEFAULT_OPTIONS = {quality: 80}
+      DEFAULT_OPTIONS = {quality: 75}
 
       def initialize(app, options = {})
         @app = app
@@ -24,7 +24,10 @@ module Rack
         request = Rack::Request.new(env)
         media_types = request.accept_media_types
 
-        if response.kind_of?(Rack::File) && media_types.include?("image/webp") && ACCEPT_CONTENT_TYPES.include?(headers["Content-Type"])
+        if response.kind_of?(Rack::File) &&
+             media_types.include?("image/webp") &&
+             ACCEPT_CONTENT_TYPES.include?(headers["Content-Type"]) &&
+             !request.params['original']
           begin
             webp_file = Tempfile.new('webp')
             now = Time.now
