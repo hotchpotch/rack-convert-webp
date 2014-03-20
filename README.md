@@ -1,29 +1,35 @@
 # Rack::Convert::Webp
 
-TODO: Write a gem description
+Auto convert to WebP.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'rack-convert-webp'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rack-convert-webp
+```
+gem install rack-convert-webp
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$ rackup -r 'rack/convert/webp' -b "use Rack::Convert::Webp;run Rack::Directory.new '.'"
+$ curl -X GET -I -H "Accept: image/webp" -H "Content-Type: image/jpeg" 'http://localhost:9292/example.jpg'
+HTTP/1.1 200 OK
+Last-Modified: Thu, 20 Mar 2014 14:50:34 GMT
+Content-Type: image/webp
+Content-Length: 19340
+X-Encoding-Time: 42ms
+X-Compress: 24% - original: 78361 webp: 19340
+Connection: keep-alive
+Server: thin 1.6.1 codename Death Proof
 
-## Contributing
+$ curl -X GET -I -H "Accept: image/webp" -H "Content-Type: image/jpeg" 'http://localhost:9292/example.jpg?quality=10'
+HTTP/1.1 200 OK
+Last-Modified: Thu, 20 Mar 2014 14:50:34 GMT
+Content-Type: image/webp
+Content-Length: 4346
+X-Encoding-Time: 36ms
+X-Compress: 5% - original: 78361 webp: 4346
+Connection: keep-alive
+Server: thin 1.6.1 codename Death Proof
+```
 
-1. Fork it ( http://github.com/<my-github-username>/rack-convert-webp/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request

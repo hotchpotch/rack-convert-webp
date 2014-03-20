@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Rack::Convert::Webp::VERSION
   spec.authors       = ["Yuichi Tateno"]
   spec.email         = ["hotchpotch@gmail.com"]
-  spec.summary       = %q{-}
-  spec.description   = %q{-}
+  spec.summary       = %q{rack convert webp}
+  spec.description   = %q{rack convert webp}
   spec.homepage      = ""
   spec.license       = "MIT"
 
